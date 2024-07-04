@@ -6,7 +6,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDialog } from '@angular/material/dialog';
 
 import { Note } from '../../../../shared/interfaces/note.interface';
 
@@ -30,8 +29,6 @@ import { NoteDialogService } from '../../../../shared/services/note-dialog.servi
 export class NoteCardComponent {
   @Input() note: Note = { id: '', title: '', content: '', isChecked: false };
 
-  readonly dialog = inject(MatDialog);
-
   constructor(
     private noteService: NotesService,
     private noteDialogService: NoteDialogService
@@ -49,5 +46,9 @@ export class NoteCardComponent {
 
   deleteNote(id: string): void {
     this.noteService.deleteNote(id);
+  }
+
+  onCheck(): void {
+    this.noteService.setNotesOnLocalStorage();
   }
 }

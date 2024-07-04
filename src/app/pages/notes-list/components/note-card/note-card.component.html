@@ -2,7 +2,11 @@
   <mat-card appearance="outlined" class="card">
     <mat-card-header class="card-header">
       <div mat-card-title class="title-wrapper">
-        <mat-checkbox class="header-checkbox" [(ngModel)]="note.isChecked"></mat-checkbox>
+        <mat-checkbox
+          class="header-checkbox"
+          [(ngModel)]="note.isChecked"
+          (change)="onCheck()"
+        ></mat-checkbox>
         <mat-card-title>{{ note.title }}</mat-card-title>
       </div>
 

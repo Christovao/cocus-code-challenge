@@ -14,6 +14,7 @@ import { Note } from '../../shared/interfaces/note.interface';
 
 import { NotesService } from '../../shared/services/notes.service';
 import { NoteDialogService } from '../../shared/services/note-dialog.service';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 
 import { Observable, of } from 'rxjs';
 
@@ -39,7 +40,8 @@ export class NotesListComponent implements OnInit {
 
   constructor(
     private noteService: NotesService,
-    private noteDialogService: NoteDialogService
+    private noteDialogService: NoteDialogService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +49,11 @@ export class NotesListComponent implements OnInit {
   }
 
   getNotes(): void {
+    if (this.localStorageService.getItem('notes')) {
+      const notesStorage = JSON.parse(this.localStorageService.getItem('notes')!) as Note[];
+      this.noteService.setNotes(notesStorage);
+    }
+
     this.notes$ = this.noteService.getNotes();
   }
 
