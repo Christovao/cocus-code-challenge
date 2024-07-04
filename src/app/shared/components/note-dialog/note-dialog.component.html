@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Your note</h2>
+
+<mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <input matInput name="title" placeholder="Title" [(ngModel)]="data.title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      name="content"
+      placeholder="Take a note..."
+      [(ngModel)]="data.content"
+    ></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button [mat-dialog-close]="note()">Save note</button>
+</mat-dialog-actions>
