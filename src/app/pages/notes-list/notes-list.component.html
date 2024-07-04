@@ -5,4 +5,15 @@
       <input matInput placeholder="Search note" />
     </mat-form-field>
   </form>
+
+  <button mat-flat-button (click)="createNote()">
+    <mat-icon>add</mat-icon>
+    Create new note
+  </button>
+
+  <div class="notes-list">
+    <ng-container *ngFor="let note of notes">
+      <app-note-card [note]="note"></app-note-card>
+    </ng-container>
+  </div>
 </div>
