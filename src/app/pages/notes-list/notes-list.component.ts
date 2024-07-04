@@ -9,11 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 
 import { NoteCardComponent } from './components/note-card/note-card.component';
-import { NoteDialogComponent } from '../../shared/components/note-dialog/note-dialog.component';
 
 import { Note } from '../../shared/interfaces/note.interface';
 
 import { NotesService } from '../../shared/services/notes.service';
+import { NoteDialogService } from '../../shared/services/note-dialog.service';
+
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-notes-list',
@@ -31,28 +33,25 @@ import { NotesService } from '../../shared/services/notes.service';
   ],
 })
 export class NotesListComponent implements OnInit {
-  notes: Note[] = [];
+  notes$: Observable<Note[]> = of([]);
 
   readonly dialog = inject(MatDialog);
 
-  constructor(private noteService: NotesService) {}
+  constructor(
+    private noteService: NotesService,
+    private noteDialogService: NoteDialogService
+  ) {}
 
   ngOnInit(): void {
     this.getNotes();
   }
 
   getNotes(): void {
-    this.notes = this.noteService.getAllNotes();
+    this.notes$ = this.noteService.getNotes();
   }
 
   createNote(): void {
-    const dialogRef = this.dialog.open(NoteDialogComponent, {
-      width: '400px',
-      data: {
-        title: '',
-        content: '',
-      },
-    });
+    const dialogRef = this.noteDialogService.openNoteDialog();
 
     dialogRef.afterClosed().subscribe((result: Note) => {
       if (result?.title || result?.content) {

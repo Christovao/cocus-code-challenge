@@ -12,7 +12,7 @@
   </button>
 
   <div class="notes-list">
-    <ng-container *ngFor="let note of notes">
+    <ng-container *ngFor="let note of notes$ | async">
       <app-note-card [note]="note"></app-note-card>
     </ng-container>
   </div>
