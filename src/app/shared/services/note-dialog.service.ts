@@ -21,6 +21,7 @@ export class NoteDialogService {
         id: note?.id || uuidv4(),
         title: note?.title || '',
         content: note?.content || '',
+        isChecked: note?.isChecked || false,
       } as Note,
     });
 

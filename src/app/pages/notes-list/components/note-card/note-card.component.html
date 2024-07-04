@@ -1,7 +1,10 @@
 <div class="container">
   <mat-card appearance="outlined" class="card">
     <mat-card-header class="card-header">
-      <mat-card-title>{{ note.title }}</mat-card-title>
+      <div mat-card-title class="title-wrapper">
+        <mat-checkbox class="header-checkbox" [(ngModel)]="note.isChecked"></mat-checkbox>
+        <mat-card-title>{{ note.title }}</mat-card-title>
+      </div>
 
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_horiz</mat-icon>

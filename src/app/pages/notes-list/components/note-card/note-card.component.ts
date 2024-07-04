@@ -1,6 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -14,12 +16,19 @@ import { NoteDialogService } from '../../../../shared/services/note-dialog.servi
 @Component({
   selector: 'app-note-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [
+    FormsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+  ],
   templateUrl: './note-card.component.html',
   styleUrl: './note-card.component.scss',
 })
 export class NoteCardComponent {
-  @Input() note: Note = { id: '', title: '', content: '' };
+  @Input() note: Note = { id: '', title: '', content: '', isChecked: false };
 
   readonly dialog = inject(MatDialog);
 
