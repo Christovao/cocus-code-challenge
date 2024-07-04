@@ -1,3 +1,5 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { NotesListComponent } from './pages/notes-list/notes-list.component';
+
+export const routes: Routes = [{ path: '', component: NotesListComponent }];
