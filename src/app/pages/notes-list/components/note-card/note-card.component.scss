@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .card {
+    max-height: 300px;
+    overflow: hidden;
+
+    .card-header {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      p {
+        overflow: hidden;
+      }
+    }
+  }
+}
