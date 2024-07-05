@@ -4,7 +4,7 @@
   gap: 10px;
 
   .card {
-    max-height: 300px;
+    max-height: 500px;
     overflow: hidden;
 
     .card-header {
@@ -17,12 +17,18 @@
       }
     }
 
-    .card-content {
+    mat-card-content {
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-left: 40px;
+      gap: 10px;
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 40px;
+      }
     }
   }
 }

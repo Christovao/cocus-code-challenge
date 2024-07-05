@@ -38,6 +38,10 @@
         *ngFor="let line of note.content.split('\n')"
         [innerHTML]="line"
       ></div>
+
+      <div *ngFor="let img of note.images" class="container">
+        <img mat-card-image [src]="img" alt="Upload image" />
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

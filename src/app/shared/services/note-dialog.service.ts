@@ -22,6 +22,7 @@ export class NoteDialogService {
         title: note?.title || '',
         content: note?.content || '',
         isChecked: note?.isChecked || false,
+        images: note?.images || [],
       } as Note,
     });
 

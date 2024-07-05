@@ -13,6 +13,19 @@
       [(ngModel)]="data.content"
     ></textarea>
   </mat-form-field>
+
+  <div class="upload-button">
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+
+  <ng-container *ngIf="data.images?.length || imageSrcs.length">
+    <ng-container *ngFor="let img of data.images || imageSrcs; let i = index">
+      <img [src]="img" alt="Uploaded Image" />
+      <button mat-button color="warn" (click)="removeImage(i)">
+        Remove Image
+      </button>
+    </ng-container>
+  </ng-container>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
