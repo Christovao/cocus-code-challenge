@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { NoteDialogComponent } from '../components/note-dialog/note-dialog.component';
+import { NoteDialogComponent } from '../../components/note-dialog/note-dialog.component';
 
-import { Note } from '../interfaces/note.interface';
+import { Note } from '../../interfaces/note.interface';
 
 import { v4 as uuidv4 } from 'uuid';
 
