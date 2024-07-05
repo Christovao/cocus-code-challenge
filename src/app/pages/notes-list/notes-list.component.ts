@@ -11,9 +11,9 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
 
 import { Note } from '../../shared/interfaces/note.interface';
 
-import { NotesService } from '../../shared/services/notes.service';
-import { NoteDialogService } from '../../shared/services/note-dialog.service';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { NotesService } from '../../shared/services/notes/notes.service';
+import { NoteDialogService } from '../../shared/services/note-dialog/note-dialog.service';
+import { LocalStorageService } from '../../shared/services/local-storage/local-storage.service';
 
 import { Observable, of } from 'rxjs';
 

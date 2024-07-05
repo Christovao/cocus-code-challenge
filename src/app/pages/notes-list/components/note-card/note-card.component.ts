@@ -10,8 +10,8 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { Note } from '../../../../shared/interfaces/note.interface';
 
-import { NotesService } from '../../../../shared/services/notes.service';
-import { NoteDialogService } from '../../../../shared/services/note-dialog.service';
+import { NotesService } from '../../../../shared/services/notes/notes.service';
+import { NoteDialogService } from '../../../../shared/services/note-dialog/note-dialog.service';
 
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';

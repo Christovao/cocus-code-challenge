@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { Note } from '../interfaces/note.interface';
+import { Note } from '../../interfaces/note.interface';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
