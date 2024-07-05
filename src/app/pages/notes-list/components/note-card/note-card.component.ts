@@ -1,4 +1,5 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
@@ -12,10 +13,13 @@ import { Note } from '../../../../shared/interfaces/note.interface';
 import { NotesService } from '../../../../shared/services/notes.service';
 import { NoteDialogService } from '../../../../shared/services/note-dialog.service';
 
+import { jsPDF } from 'jspdf';
+
 @Component({
   selector: 'app-note-card',
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     MatCardModule,
     MatCheckboxModule,
@@ -48,7 +52,19 @@ export class NoteCardComponent {
     this.noteService.deleteNote(id);
   }
 
-  onCheck(): void {
+  checkNote(): void {
     this.noteService.setNotesOnLocalStorage();
+  }
+
+  saveNoteAsPdf(note: Note): void {
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text(note.title, 10, 20);
+
+    doc.setFontSize(12);
+    doc.text(doc.splitTextToSize(note.content, 190), 10, 30);
+
+    doc.save(`${note.title}.pdf`);
   }
 }

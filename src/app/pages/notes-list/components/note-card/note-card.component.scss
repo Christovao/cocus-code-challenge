@@ -22,12 +22,7 @@
       flex-direction: column;
       overflow: hidden;
       text-overflow: ellipsis;
-
-      p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-left: 40px;
-      }
+      margin-left: 40px;
     }
   }
 }
