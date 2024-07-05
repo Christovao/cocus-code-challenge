@@ -46,14 +46,20 @@ export class NotesService {
 
   deleteNote(id: string): void {
     this.notes = this.notes.filter((note: Note) => note.id !== id);
-    this.setNotesOnLocalStorage();
+
+    if (this.notes?.length) {
+      this.setNotesOnLocalStorage();
+    } else {
+      this.localStorageService.removeItem(this.localStorageService.notesKey);
+    }
+
     this.notesSubject.next(this.notes);
   }
 
   setNotesOnLocalStorage(): void {
     this.localStorageService.setItem(
       this.localStorageService.notesKey,
-      JSON.stringify(this.notes)
+      this.notes
     );
   }
 }

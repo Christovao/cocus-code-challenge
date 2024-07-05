@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialog } from '@angular/material/dialog';
 
 import { NoteCardComponent } from './components/note-card/note-card.component';
 
@@ -36,8 +35,6 @@ import { Observable, of } from 'rxjs';
 export class NotesListComponent implements OnInit {
   notes$: Observable<Note[]> = of([]);
 
-  readonly dialog = inject(MatDialog);
-
   constructor(
     private noteService: NotesService,
     private noteDialogService: NoteDialogService,
@@ -49,11 +46,11 @@ export class NotesListComponent implements OnInit {
   }
 
   getNotes(): void {
-    if (this.localStorageService.getItem('notes')) {
-      const notesStorage = JSON.parse(this.localStorageService.getItem('notes')!) as Note[];
-      this.noteService.setNotes(notesStorage);
-    }
+    const notesStorage = this.localStorageService.getItem(
+      this.localStorageService.notesKey
+    ) as Note[];
 
+    notesStorage && this.noteService.setNotes(notesStorage);
     this.notes$ = this.noteService.getNotes();
   }
 
