@@ -15,7 +15,17 @@
   </mat-form-field>
 
   <div class="upload-button">
-    <input type="file" (change)="onFileSelected($event)" />
+    <input
+      type="file"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+      hidden
+      #fileInput
+    />
+
+    <button mat-button (click)="fileInput.click()">
+      <mat-icon>image</mat-icon> Insert image
+    </button>
   </div>
 
   <ng-container *ngIf="data.images?.length || imageSrcs.length">
