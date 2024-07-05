@@ -39,8 +39,8 @@
         [innerHTML]="line"
       ></div>
 
-      <div *ngFor="let img of note.images" class="container">
-        <img mat-card-image [src]="img" alt="Upload image" />
+      <div *ngFor="let img of note.images" class="container" #imagesTemplateRef>
+        <img mat-card-image [src]="img" alt="Uploaded image" />
       </div>
     </mat-card-content>
   </mat-card>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -14,6 +14,7 @@ import { NotesService } from '../../../../shared/services/notes.service';
 import { NoteDialogService } from '../../../../shared/services/note-dialog.service';
 
 import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-note-card',
@@ -31,6 +32,8 @@ import { jsPDF } from 'jspdf';
   styleUrl: './note-card.component.scss',
 })
 export class NoteCardComponent {
+  @ViewChildren('imagesTemplateRef') imagesTemplateRefs!: ElementRef[];
+
   @Input() note: Note = { id: '', title: '', content: '', isChecked: false };
 
   constructor(
@@ -65,6 +68,39 @@ export class NoteCardComponent {
     doc.setFontSize(12);
     doc.text(doc.splitTextToSize(note.content, 190), 10, 30);
 
-    doc.save(`${note.title}.pdf`);
+    this.imagesToPdf(doc, note);
+  }
+
+  private imagesToPdf(doc: jsPDF, note: Note): void {
+    let x = 5;
+    let y = 100;
+    let pageHeight = doc.internal.pageSize.height;
+
+    if (this.imagesTemplateRefs?.length > 0) {
+      this.imagesTemplateRefs.forEach((imageRef, index) => {
+        const element = imageRef.nativeElement;
+        html2canvas(element).then((canvas) => {
+          const imgData = canvas.toDataURL('image/jpeg');
+
+          const imgWidth = 200;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+          if (y + imgHeight > pageHeight - 20) {
+            doc.addPage();
+            y = 40;
+          }
+
+          doc.addImage(imgData, 'JPEG', x, y, imgWidth, imgHeight);
+
+          y += imgHeight + 10;
+
+          if (index === this.imagesTemplateRefs.length - 1) {
+            doc.save(`${note.title}.pdf`);
+          }
+        });
+      });
+    } else {
+      doc.save(`${note.title}.pdf`);
+    }
   }
 }
