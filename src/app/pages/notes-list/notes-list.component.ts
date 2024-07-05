@@ -15,7 +15,7 @@ import { NotesService } from '../../shared/services/notes/notes.service';
 import { NoteDialogService } from '../../shared/services/note-dialog/note-dialog.service';
 import { LocalStorageService } from '../../shared/services/local-storage/local-storage.service';
 
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-notes-list',
@@ -34,6 +34,7 @@ import { Observable, of } from 'rxjs';
 })
 export class NotesListComponent implements OnInit {
   notes$: Observable<Note[]> = of([]);
+  filteredNotes$: Observable<Note[]> = of([]);
 
   constructor(
     private noteService: NotesService,
@@ -52,6 +53,7 @@ export class NotesListComponent implements OnInit {
 
     notesStorage && this.noteService.setNotes(notesStorage);
     this.notes$ = this.noteService.getNotes();
+    this.filteredNotes$ = this.notes$;
   }
 
   createNote(): void {
@@ -62,5 +64,19 @@ export class NotesListComponent implements OnInit {
         this.noteService.createNote(result);
       }
     });
+  }
+
+  onSearch(event: any): void {
+    const searchTerm = (event.target as HTMLInputElement).value;
+
+    this.filteredNotes$ = this.notes$.pipe(
+      map((notes: Note[]) =>
+        notes.filter(
+          (note) =>
+            note.title.toLowerCase().includes(searchTerm) ||
+            note.content.toLowerCase().includes(searchTerm)
+        )
+      )
+    );
   }
 }
