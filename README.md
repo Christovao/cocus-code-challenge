@@ -1,27 +1,93 @@
-# CocusCodeChallenge
+# Notes Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+## Table of Contents
+1. [Objective](#objective)
+2. [Features](#features)
+3. [Technologies](#technologies)
+4. [Installation](#installation)
+5. [Dependencies](#dependencies)
+6. [Usage](#usage)
 
-## Development server
+## Objective
+The primary objective of this project is to create a Notes Application that allows users to take very simple notes using Browser Storage. This application aims to provide an efficient and user-friendly way to manage daily notes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
+The application includes the following functionalities:
+1. **Add Notes**: Users can add notes with a title.
+2. **View Notes**: Users can view the list of all notes.
+3. **Edit Notes**: Users can edit existing notes.
+4. **Delete Notes**: Users can delete notes that are no longer needed.
+5. **Browser Storage**: All the notes are stored in Browser's Local Storage.
 
-## Code scaffolding
+Additionally, the application supports the following features:
+- **Encryption**: Encrypt notes before storing them in the browser storage.
+- **Save as PDF**: Save notes as PDF files.
+- **Insert Images**: Insert images into notes.
+- **Search Notes**: Search through notes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies
+This project is built using the Angular framework.
 
-## Build
+## Installation
+To run this project locally, follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Christovao/cocus-code-challenge.git
 
-## Running unit tests
+2. **Navigate to the project directory**
+   ```bash
+   cd cocus-code-challenge
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Install dependencies**
+   ```bash
+   npm install
 
-## Running end-to-end tests
+4. **Run the application**
+   The server will run on http://localhost:4200
+   ```bash
+   ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Dependencies
+These are the dependencies used in the Notes Application:
 
-## Further help
+- **Angular CLI**: Command-line interface for Angular development.
+- **Angular Material**: UI component library for Angular applications (optional, for enhanced UI features).
+- **CryptoJS**: Library used for encryption and decryption of notes.
+- **jsPDF**: Library for generating PDF documents from HTML content.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+These dependencies are essential for the functionality and user interface enhancements of the application. Make sure they are installed and configured correctly to run the Notes Application smoothly.
+
+## Usage
+To effectively use the Notes Application, follow these steps:
+
+1. **Add Note**:
+   - Click on the 'Create new note' button.
+   - Enter the title and content of your note in the provided fields.
+   - Click 'Save note' to add the note.
+
+2. **Edit Note**:
+   - While viewing a note, click the 'Edit' button.
+   - Modify the title or content as needed.
+   - Click 'Save note' to update the note.
+
+3. **Delete Note**:
+   - While viewing a note, click the 'Delete' button to remove the note from your list.
+
+4. **Browser Storage**:
+   - All the notes are stored in the Browser's Local Storage.
+   - Notes are saved in an encrypted format to ensure data security.
+   - This ensures that your notes are saved locally on your device in a secure manner.
+   - Notes persist even after closing the browser or refreshing the page.
+
+5. **Save as PDF**:
+   - While viewing a note, click the 'Save as PDF' button.
+   - This action downloads the note as a PDF file to your device.
+
+6. **Insert Images**:
+   - When adding or editing a note, use the image upload option to insert images into your notes.
+
+7. **Search Notes**:
+   - Utilize the search bar to quickly find specific notes by title or content keywords.
+
+Following these steps will help you efficiently manage your notes using the Notes Application. Enjoy organizing your thoughts and ideas!
