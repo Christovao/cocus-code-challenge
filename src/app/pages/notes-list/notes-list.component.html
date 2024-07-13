@@ -1,19 +1,17 @@
-<div class="container">
-  <form>
-    <mat-form-field class="full-width-field">
-      <mat-icon matPrefix fontIcon="search"></mat-icon>
-      <input matInput placeholder="Search note" (input)="onSearch($event)" />
-    </mat-form-field>
-  </form>
+<form>
+  <mat-form-field class="full-width-field">
+    <mat-icon matPrefix fontIcon="search"></mat-icon>
+    <input matInput placeholder="Search note" (input)="onSearch($event)" />
+  </mat-form-field>
+</form>
 
-  <button mat-flat-button (click)="createNote()">
-    <mat-icon>add</mat-icon>
-    Create new note
-  </button>
+<button mat-flat-button (click)="createNote()">
+  <mat-icon>add</mat-icon>
+  Create new note
+</button>
 
-  <div class="notes-list">
-    <ng-container *ngFor="let note of filteredNotes$ | async">
-      <app-note-card [note]="note"></app-note-card>
-    </ng-container>
-  </div>
+<div class="notes-list">
+  <ng-container *ngFor="let note of filteredNotes$ | async">
+    <app-note-card [note]="note"></app-note-card>
+  </ng-container>
 </div>

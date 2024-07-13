@@ -1,47 +1,45 @@
-<div class="container">
-  <mat-card appearance="outlined" class="card">
-    <mat-card-header class="card-header">
-      <div mat-card-title class="title-wrapper">
-        <mat-checkbox
-          class="header-checkbox"
-          [(ngModel)]="note.isChecked"
-          (change)="checkNote()"
-        ></mat-checkbox>
-        <mat-card-title>{{ note.title }}</mat-card-title>
-      </div>
+<mat-card appearance="outlined" class="card">
+  <mat-card-header class="card-header">
+    <div mat-card-title class="title-wrapper">
+      <mat-checkbox
+        class="header-checkbox"
+        [(ngModel)]="note.isChecked"
+        (change)="checkNote()"
+      ></mat-checkbox>
+      <mat-card-title>{{ note.title }}</mat-card-title>
+    </div>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_horiz</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editNote(note)">
+        <mat-icon>edit</mat-icon>
+        Edit
       </button>
 
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editNote(note)">
-          <mat-icon>edit</mat-icon>
-          Edit
-        </button>
+      <button mat-menu-item (click)="deleteNote(note.id)">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
 
-        <button mat-menu-item (click)="deleteNote(note.id)">
-          <mat-icon>delete</mat-icon>
-          Delete
-        </button>
+      <button mat-menu-item (click)="saveNoteAsPdf(note)">
+        <mat-icon>picture_as_pdf</mat-icon>
+        Save as PDF
+      </button>
+    </mat-menu>
+  </mat-card-header>
 
-        <button mat-menu-item (click)="saveNoteAsPdf(note)">
-          <mat-icon>picture_as_pdf</mat-icon>
-          Save as PDF
-        </button>
-      </mat-menu>
-    </mat-card-header>
+  <mat-card-content>
+    <div
+      class="card-content"
+      *ngFor="let line of note.content.split('\n')"
+      [innerHTML]="line"
+    ></div>
 
-    <mat-card-content>
-      <div
-        class="card-content"
-        *ngFor="let line of note.content.split('\n')"
-        [innerHTML]="line"
-      ></div>
-
-      <div *ngFor="let img of note.images" class="container" #imagesTemplateRef>
-        <img mat-card-image [src]="img" alt="Uploaded image" />
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+    <div *ngFor="let img of note.images" class="container" #imagesTemplateRef>
+      <img mat-card-image [src]="img" alt="Uploaded image" />
+    </div>
+  </mat-card-content>
+</mat-card>
