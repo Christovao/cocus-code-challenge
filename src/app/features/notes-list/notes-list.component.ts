@@ -1,19 +1,19 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 import { NoteCardComponent } from './components/note-card/note-card.component';
 
 import { Note } from '../../shared/interfaces/note.interface';
 
-import { NotesService } from '../../shared/services/notes/notes.service';
-import { NoteDialogService } from '../../shared/services/note-dialog/note-dialog.service';
 import { LocalStorageService } from '../../shared/services/local-storage/local-storage.service';
+import { NoteDialogService } from '../../shared/services/note-dialog/note-dialog.service';
+import { NotesService } from '../../shared/services/notes/notes.service';
 
 import { map, Observable, of } from 'rxjs';
 
