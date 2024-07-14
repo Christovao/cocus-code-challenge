@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { NotesListComponent } from './pages/notes-list/notes-list.component';
+import { NotesListComponent } from './features/notes-list/notes-list.component';
 
 export const routes: Routes = [{ path: '', component: NotesListComponent }];
